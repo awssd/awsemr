@@ -50,6 +50,8 @@
 </li>
 <li>Install <a href="https://www.google.com/earth/">Google Earth</a>
 </li>
+<li>Download the <a href="https://s3-us-west-2.amazonaws.com/awsemr-magic-night/emr-magic-night.tar.gz">Starter Code</a>
+</li>
 </ol>
 
 <h2>
@@ -123,17 +125,20 @@ import simplekml
 # number of clusters for the K-Means algorithm to detect
 num_clusters = 20
 
-# load data from S3 (s3://awsemr-magic-night/earthquakes.csv)
-...
+# use the spark context to load data from S3 (s3://awsemr-magic-night/earthquakes.csv)
 
 # parse out longitude and latitude coordinates from CSV
 
 # run K-Means Algorithm on data to find the cluster centers
 
-# write cluster data to a KML file for visualization
+# write cluster data to a KML file for visualization (use simplekml)
+# NOTE: the KML library uses the longitude and latitude parameters backwards than the provided data
+
+# You can use the following styling to have your clusters appear as bad-ass volcanos
+#pnt.style.iconstyle.scale = 3
+#pnt.style.iconstyle.icon.href = 'http://maps.google.com/mapfiles/kml/shapes/volcano.png'
 
 # (OPTIONAL): compute RSS error of K-Means algorithm
-
 </code></pre>
 
 <p>This is a good <a href="http://spark.apache.org/docs/latest/programming-guide.html">guide</a> on how to get started on Spark programming. Note that the spark environment automatically declared a <code>sc</code> variable, which is the Spark Context. You can use it for loading files from S3.</p>
